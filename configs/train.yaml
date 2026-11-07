@@ -1,0 +1,37 @@
+# Training configuration for the credit default model.
+# Every run is fully determined by this file + the raw data, which keeps experiments reproducible.
+
+data:
+  url: "https://archive.ics.uci.edu/static/public/350/data.csv"
+  raw_path: "data/raw/default_credit_card_clients.csv"
+  test_size: 0.20
+  valid_size: 0.20 # fraction of the remaining (non-test) rows used for calibration + threshold tuning
+
+# Attributes that are NOT used as model inputs ("fairness through unawareness")
+# but are kept aside to audit the model for disparate outcomes.
+protected_attributes: ["SEX", "MARRIAGE", "AGE"]
+
+model:
+  n_trials: 40 # Optuna trials for LightGBM hyper-parameter search
+  cv_folds: 5
+  calibration: "auto" # auto (chosen by CV log-loss on validation) | none | sigmoid | isotonic
+
+# Business assumptions for the decision threshold.
+# A missed defaulter (false negative) is assumed to cost 5x a wrongly rejected good customer
+# (false positive, i.e. lost margin). Adjust to the lender's real unit economics.
+costs:
+  false_negative: 5.0
+  false_positive: 1.0
+
+tracking:
+  enabled: true
+  tracking_uri: "sqlite:///mlflow.db"
+  experiment_name: "credit-risk"
+
+artifacts:
+  model_path: "models/model.joblib"
+  metrics_path: "reports/metrics.json"
+  figures_dir: "reports/figures"
+  reference_profile_path: "models/reference_profile.json"
+
+seed: 42
