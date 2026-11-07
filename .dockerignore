@@ -1,0 +1,14 @@
+.git
+.github
+.venv
+data
+models
+mlruns
+mlartifacts
+mlflow.db
+notebooks
+reports
+tests
+**/__pycache__
+.pytest_cache
+.ruff_cache
