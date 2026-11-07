@@ -1,0 +1,196 @@
+{
+  "model_version": "1.0.0",
+  "trained_at": "2026-11-07T11:46:58+00:00",
+  "data_sha256": "45bcf4df62ff2e237a74eb155cabfb4bbbc171219a0637daef44fdad07503dd0",
+  "dataset": {
+    "n_train": 19200,
+    "n_valid": 4800,
+    "n_test": 6000,
+    "default_rate": 0.2212
+  },
+  "costs": {
+    "false_negative": 5.0,
+    "false_positive": 1.0
+  },
+  "best_params": {
+    "n_estimators": 150,
+    "learning_rate": 0.03127353036780371,
+    "num_leaves": 9,
+    "min_child_samples": 275,
+    "subsample": 0.7035119926400067,
+    "colsample_bytree": 0.7975133706123891,
+    "reg_lambda": 0.017654048052495083,
+    "reg_alpha": 0.12030178871154672,
+    "cv_roc_auc": 0.7878692113824013
+  },
+  "calibration": {
+    "selected": "none",
+    "cv_log_loss_validation": {
+      "none": 0.42978726677481294,
+      "sigmoid": 0.43000459960843046,
+      "isotonic": 0.43915835883753784
+    }
+  },
+  "test_metrics": {
+    "logistic_regression": {
+      "roc_auc": 0.7493187063976529,
+      "gini": 0.4986374127953057,
+      "pr_auc": 0.4971152558642296,
+      "ks": 0.38591446542057006,
+      "brier": 0.1431626511643787,
+      "log_loss": 0.4522818959799154
+    },
+    "lightgbm_raw": {
+      "roc_auc": 0.7816498150077624,
+      "gini": 0.5632996300155249,
+      "pr_auc": 0.5632237468910615,
+      "ks": 0.42807411816442675,
+      "brier": 0.13456585499298002,
+      "log_loss": 0.4281676329486147
+    },
+    "lightgbm_final": {
+      "roc_auc": 0.7816498150077624,
+      "gini": 0.5632996300155249,
+      "pr_auc": 0.5632237468910615,
+      "ks": 0.42807411816442675,
+      "brier": 0.13456585499298002,
+      "log_loss": 0.4281676329486147
+    }
+  },
+  "decisions_test": {
+    "approve_all": {
+      "threshold": 1.0,
+      "expected_cost": 1.1058333333333332,
+      "approval_rate": 1.0,
+      "bad_rate_approved": 0.22116666666666668,
+      "defaulters_caught": 0.0,
+      "goods_declined": 0.0
+    },
+    "threshold_0.5": {
+      "threshold": 0.5,
+      "expected_cost": 0.741,
+      "approval_rate": 0.8778333333333334,
+      "bad_rate_approved": 0.15948357698879817,
+      "defaulters_caught": 0.36699321778447624,
+      "goods_declined": 0.05264284185747913
+    },
+    "cost_optimal": {
+      "threshold": 0.15,
+      "expected_cost": 0.5586666666666666,
+      "approval_rate": 0.49516666666666664,
+      "bad_rate_approved": 0.09256142712891283,
+      "defaulters_caught": 0.7927656367746797,
+      "goods_declined": 0.4230686924887653
+    }
+  },
+  "fairness_test": {
+    "sex": [
+      {
+        "group": "female",
+        "n": 3598,
+        "default_rate": 0.2129,
+        "approval_rate": 0.5064,
+        "tpr": 0.7924,
+        "fpr": 0.4128,
+        "auc": 0.7864
+      },
+      {
+        "group": "male",
+        "n": 2402,
+        "default_rate": 0.2336,
+        "approval_rate": 0.4784,
+        "tpr": 0.7932,
+        "fpr": 0.4389,
+        "auc": 0.7741
+      }
+    ],
+    "marriage": [
+      {
+        "group": "married",
+        "n": 2767,
+        "default_rate": 0.2414,
+        "approval_rate": 0.5085,
+        "tpr": 0.7874,
+        "fpr": 0.3973,
+        "auc": 0.7875
+      },
+      {
+        "group": "other",
+        "n": 75,
+        "default_rate": 0.16,
+        "approval_rate": 0.4,
+        "tpr": 0.8333,
+        "fpr": 0.5556,
+        "auc": 0.6812
+      },
+      {
+        "group": "single",
+        "n": 3158,
+        "default_rate": 0.2049,
+        "approval_rate": 0.4858,
+        "tpr": 0.7975,
+        "fpr": 0.4413,
+        "auc": 0.7798
+      }
+    ],
+    "age_band": [
+      {
+        "group": "<30",
+        "n": 1912,
+        "default_rate": 0.2233,
+        "approval_rate": 0.4597,
+        "tpr": 0.8126,
+        "fpr": 0.462,
+        "auc": 0.7852
+      },
+      {
+        "group": "30-39",
+        "n": 2198,
+        "default_rate": 0.2061,
+        "approval_rate": 0.5318,
+        "tpr": 0.7881,
+        "fpr": 0.3851,
+        "auc": 0.7895
+      },
+      {
+        "group": "40-49",
+        "n": 1341,
+        "default_rate": 0.2327,
+        "approval_rate": 0.5056,
+        "tpr": 0.7756,
+        "fpr": 0.4091,
+        "auc": 0.7716
+      },
+      {
+        "group": "50+",
+        "n": 549,
+        "default_rate": 0.2459,
+        "approval_rate": 0.4463,
+        "tpr": 0.7852,
+        "fpr": 0.4783,
+        "auc": 0.7678
+      }
+    ]
+  },
+  "disparate_impact_ratio": {
+    "sex": 0.9446258195009465,
+    "marriage": 0.7866382373845061,
+    "age_band": 0.8390868536151741
+  },
+  "drift_test_vs_train": {
+    "max_psi": 0.0026140587632756266,
+    "n_significant": 0
+  },
+  "top_features": {
+    "PAY_1": 0.2803,
+    "max_delay": 0.2521,
+    "months_delayed": 0.2146,
+    "BILL_AMT1": 0.11,
+    "LIMIT_BAL": 0.0924,
+    "PAY_AMT2": 0.0855,
+    "PAY_AMT1": 0.0733,
+    "util_max": 0.0723,
+    "util_mean": 0.0577,
+    "util_recent": 0.0563
+  }
+}
